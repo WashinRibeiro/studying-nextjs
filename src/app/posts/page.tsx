@@ -1,13 +1,13 @@
-import { Button } from "@/components/button";
+import Link from "next/link";
 
-interface PostProps {
+export interface PostProps {
   id: number;
   title: string;
   body: string;
   userId: number;
 }
 
-interface ResponseProps {
+export interface ResponseProps {
   posts: PostProps[];
 }
 
@@ -45,10 +45,7 @@ export default async function PostsPage() {
           className="border border-gray-200 p-2"
           name="userId"
         />
-        <button
-          className="bg-blue-500 text-white p-2"
-          type="submit"
-        >
+        <button className="bg-blue-500 text-white p-2" type="submit">
           Buscar usuário
         </button>
       </form>
@@ -58,6 +55,7 @@ export default async function PostsPage() {
           <div key={post.id} className="bg-gray-200 p-4 mx-2 rounded-md">
             <h2 className="font-bold">{post.title}</h2>
             <p>{post.body}</p>
+            <Link className="text-blue-500 hover:underline" href={`/posts/${post.id}`}>Acessar detalhes</Link>
           </div>
         ))}
       </div>
